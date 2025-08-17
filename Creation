@@ -1,134 +1,59 @@
---// Load Rayfield UI
+-- LOAD RAYFIELD UI
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
+-- CREATE WINDOW WITH AMBER GLOW THEME
 local Window = Rayfield:CreateWindow({
-   Name = "Forsaken | AutoBlock",
-   LoadingTitle = "Forsaken Utility",
-   LoadingSubtitle = "by ChatGPT",
-   ConfigurationSaving = {
-      Enabled = true,
-      FolderName = "ForsakenScripts",
-      FileName = "AutoBlockConfig"
-   },
-   KeySystem = false
+    Name = "Sightseeing76's collection",
+    LoadingTitle = "Loading...",
+    LoadingSubtitle = "Sightseeing76's",
+    ConfigurationSaving = {
+        Enabled = true,
+        FolderName = "Sightseeing76's collection",
+        FileName = "Settings"
+    },
+    Discord = {
+        Enabled = false,
+        Invite = "yourinvitecode",
+        RememberJoins = true
+    },
+    KeySystem = false,
+    Theme = "AmberGlow"
 })
 
-local MainTab = Window:CreateTab("Main", 4483362458) -- Sword icon
-local Section = MainTab:CreateSection("Auto Block")
+-- CREATE FORSAKEN TAB
+local ForsakenTab = Window:CreateTab("Forsaken", 4483362458)
 
--- Toggle state
-getgenv().AutoBlock = false
-getgenv().DetectionRange = 15 -- default studs
-getgenv().BlockCooldown = 24 -- default seconds
-
--- Auto Block toggle
-MainTab:CreateToggle({
-   Name = "Auto Block",
-   CurrentValue = false,
-   Flag = "AutoBlockToggle",
-   Callback = function(Value)
-      getgenv().AutoBlock = Value
-   end,
-})
-
--- Detection Range dropdown
-MainTab:CreateDropdown({
-   Name = "Detection Range",
-   Options = {"15","25","50","75","100"},
-   CurrentOption = "15",
-   Flag = "DetectionRange",
-   Callback = function(Option)
-      getgenv().DetectionRange = tonumber(Option)
-   end,
-})
-
--- Block Cooldown dropdown
-MainTab:CreateDropdown({
-   Name = "Block Cooldown",
-   Options = {"15","20","24","30"},
-   CurrentOption = "24",
-   Flag = "BlockCooldown",
-   Callback = function(Option)
-      getgenv().BlockCooldown = tonumber(Option)
-   end,
-})
-
--- Auto Block GitHub Button
-MainTab:CreateButton({
-    Name = "Load GitHub Auto Block",
+-- AUTO BACKSTAB BUTTON
+ForsakenTab:CreateButton({
+    Name = "Auto Backstab",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Auto-block-update-/refs/heads/main/Auto%20block"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/skibidi399/Auto-backstab-two-time/refs/heads/main/Auto%20backstab%20v2"))();
     end
 })
 
--- Killer Attack Animations
-local BlockAnimations = {
-   "126830014841198",
-   "126355327951215",
-   "121086746534252",
-   "18885909645",
-   "98456918873918",
-   "105458270463374",
-   "83829782357897",
-   "125403313786645",
-   "118298475669935",
-   "82113744478546",
-   "70371667919898",
-   "99135633258223",
-   "97167027849946",
-   "109230267448394",
-   "139835501033932",
-   "126896426760253",
-   "109667959938617",
-   "126681776859538",
-   "129976080405072",
-   "121293883585738",
-   "81639435858902",
-   "137314737492715",
-   "92173139187970",
-}
+-- OP BUTTON
+ForsakenTab:CreateButton({
+    Name = "OP",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/BobJunior1/ForsakenBoi/refs/heads/main/B0bbyHub"))();
+    end
+})
 
---// Cooldown tracker
-local lastBlock = 0
+-- AUTO BLOCK BUTTON (UPDATED VERSION)
+ForsakenTab:CreateButton({
+    Name = "Auto Block (Excludes Jason M1'A & Coolkid M1)",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Auto-block-update-/refs/heads/main/Auto%20block"))();
+    end
+})
 
-local function tryBlock()
-   if tick() - lastBlock >= getgenv().BlockCooldown then
-      local args = {"UseActorAbility","Block"}
-      game:GetService("ReplicatedStorage")
-         :WaitForChild("Modules")
-         :WaitForChild("Network")
-         :WaitForChild("RemoteEvent")
-         :FireServer(unpack(args))
-      lastBlock = tick()
-   end
-end
+-- CREATE DOORS TAB
+local DoorsTab = Window:CreateTab("Doors", 4483362460) -- Replace with your preferred icon ID
 
---// Auto Block Logic
-task.spawn(function()
-   local Players = game:GetService("Players")
-   local LocalPlayer = Players.LocalPlayer
-   local RunService = game:GetService("RunService")
-
-   RunService.Heartbeat:Connect(function()
-      if getgenv().AutoBlock and LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
-         for _,plr in ipairs(Players:GetPlayers()) do
-            if plr ~= LocalPlayer and plr.Character and plr.Character:FindFirstChildOfClass("Humanoid") then
-               local humanoid = plr.Character:FindFirstChildOfClass("Humanoid")
-               local root = plr.Character:FindFirstChild("HumanoidRootPart")
-
-               if humanoid and humanoid:FindFirstChild("Animator") and root then
-                  local distance = (root.Position - LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-                  if distance <= getgenv().DetectionRange then
-                     for _,track in ipairs(humanoid.Animator:GetPlayingAnimationTracks()) do
-                        local animId = tostring(track.Animation.AnimationId):gsub("%D", "")
-                        if table.find(BlockAnimations, animId) then
-                           tryBlock()
-                        end
-                     end
-                  end
-               end
-            end
-         end
-      end
-   end)
-end)
+-- SENSATION BUTTON
+DoorsTab:CreateButton({
+    Name = "Sensation",
+    Callback = function()
+        loadstring(game:HttpGet("https://rawscripts.net/raw/FLOOR-2-DOORS-Sensation-V2-20105"))()
+    end
+})
