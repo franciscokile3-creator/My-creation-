@@ -47,6 +47,14 @@ ForsakenTab:CreateButton({
     end
 })
 
+-- RINGTA BUTTON
+ForsakenTab:CreateButton({
+    Name = "Ringta",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/wefwef127382/forsakenloader.github.io/refs/heads/main/RINGTABUBLIK.lua"))()
+    end
+})
+
 -- CREATE DOORS TAB
 local DoorsTab = Window:CreateTab("Doors", 4483362460) -- Replace with your preferred icon ID
 
