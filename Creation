@@ -65,3 +65,31 @@ DoorsTab:CreateButton({
         loadstring(game:HttpGet("https://rawscripts.net/raw/FLOOR-2-DOORS-Sensation-V2-20105"))()
     end
 })
+
+-- CREATE RAYFIELD TAB
+local RayfieldTab = Window:CreateTab("Rayfield", 4483362444) -- You can change icon ID
+
+-- ANTISTUN BUTTON
+RayfieldTab:CreateButton({
+    Name = "Antistun",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Antistun/refs/heads/main/Antistun"))()
+    end
+})
+
+-- RAYFIELD INFO BUTTON
+RayfieldTab:CreateButton({
+    Name = "UI Reload",
+    Callback = function()
+        Rayfield:Destroy() -- Destroys the current UI
+        loadstring(game:HttpGet('https://sirius.menu/rayfield'))() -- Reload Rayfield
+    end
+})
+
+-- RAYFIELD CREDITS
+RayfieldTab:CreateButton({
+    Name = "Credits",
+    Callback = function()
+        print("Rayfield UI made by Sirius | Script collection by Sightseeing76")
+    end
+})
