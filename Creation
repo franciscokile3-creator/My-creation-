@@ -20,10 +20,9 @@ local Window = Rayfield:CreateWindow({
     Theme = "AmberGlow"
 })
 
--- CREATE FORSAKEN TAB
+-- FORSAKEN TAB
 local ForsakenTab = Window:CreateTab("Forsaken", 4483362458)
 
--- AUTO BACKSTAB BUTTON
 ForsakenTab:CreateButton({
     Name = "Auto Backstab",
     Callback = function()
@@ -31,7 +30,6 @@ ForsakenTab:CreateButton({
     end
 })
 
--- OP BUTTON
 ForsakenTab:CreateButton({
     Name = "OP",
     Callback = function()
@@ -39,57 +37,63 @@ ForsakenTab:CreateButton({
     end
 })
 
--- AUTO BLOCK BUTTON (UPDATED VERSION)
 ForsakenTab:CreateButton({
-    Name = "Auto Block (Excludes Jason M1'A & Coolkid M1)",
+    Name = "Auto Block doesn't work on jason m1'a and coolkid m1",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Auto-block-update-/refs/heads/main/Auto%20block"))();
     end
 })
 
--- RINGTA BUTTON
 ForsakenTab:CreateButton({
     Name = "Ringta",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/wefwef127382/forsakenloader.github.io/refs/heads/main/RINGTABUBLIK.lua"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/wefwef127382/forsakenloader.github.io/refs/heads/main/RINGTABUBLIK.lua"))();
     end
 })
 
--- CREATE DOORS TAB
-local DoorsTab = Window:CreateTab("Doors", 4483362460) -- Replace with your preferred icon ID
+-- DOORS TAB
+local DoorsTab = Window:CreateTab("Doors", 4483362458)
 
--- SENSATION BUTTON
 DoorsTab:CreateButton({
     Name = "Sensation",
     Callback = function()
-        loadstring(game:HttpGet("https://rawscripts.net/raw/FLOOR-2-DOORS-Sensation-V2-20105"))()
+        loadstring(game:HttpGet("https://rawscripts.net/raw/FLOOR-2-DOORS-Sensation-V2-20105"))();
     end
 })
 
--- CREATE RAYFIELD TAB
-local RayfieldTab = Window:CreateTab("Rayfield", 4483362444) -- You can change icon ID
+-- RAYFIELD TAB
+local RayfieldTab = Window:CreateTab("Rayfield", 4483362458)
 
--- ANTISTUN BUTTON
 RayfieldTab:CreateButton({
-    Name = "Antistun",
+    Name = "AntiStun",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Antistun/refs/heads/main/Antistun"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Antistun/refs/heads/main/Antistun"))();
     end
 })
 
--- RAYFIELD INFO BUTTON
-RayfieldTab:CreateButton({
-    Name = "UI Reload",
-    Callback = function()
-        Rayfield:Destroy() -- Destroys the current UI
-        loadstring(game:HttpGet('https://sirius.menu/rayfield'))() -- Reload Rayfield
-    end
-})
+-- SERVERHOP TAB
+local ServerhopTab = Window:CreateTab("Serverhop", 4483362458)
 
--- RAYFIELD CREDITS
-RayfieldTab:CreateButton({
-    Name = "Credits",
+ServerhopTab:CreateButton({
+    Name = "Low Player Serverhop",
     Callback = function()
-        print("Rayfield UI made by Sirius | Script collection by Sightseeing76")
+        local Http = game:GetService("HttpService")
+        local TPS = game:GetService("TeleportService")
+        local Api = "https://games.roblox.com/v1/games/"
+
+        local _place = game.PlaceId
+        local _servers = Api.._place.."/servers/Public?sortOrder=Asc&limit=100"
+        function ListServers(cursor)
+            local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or ""))
+            return Http:JSONDecode(Raw)
+        end
+
+        local Server, Next; repeat
+            local Servers = ListServers(Next)
+            Server = Servers.data[1]
+            Next = Servers.nextPageCursor
+        until Server
+
+        TPS:TeleportToPlaceInstance(_place,Server.id,game:GetService('Players').LocalPlayer)
     end
 })
