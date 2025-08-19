@@ -38,7 +38,7 @@ ForsakenTab:CreateButton({
 })
 
 ForsakenTab:CreateButton({
-    Name = "Auto Block doesn't work on jason m1'a and coolkid m1",
+    Name = "Auto Block (Excludes Jason M1'A & Coolkid M1)",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Auto-block-update-/refs/heads/main/Auto%20block"))();
     end
@@ -51,8 +51,15 @@ ForsakenTab:CreateButton({
     end
 })
 
+ForsakenTab:CreateButton({
+    Name = "Chance Aimbot",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Lollygagsaken/refs/heads/main/Lollygagsaken"))();
+    end
+})
+
 -- DOORS TAB
-local DoorsTab = Window:CreateTab("Doors", 4483362458)
+local DoorsTab = Window:CreateTab("Doors", 4483362460)
 
 DoorsTab:CreateButton({
     Name = "Sensation",
@@ -62,12 +69,27 @@ DoorsTab:CreateButton({
 })
 
 -- RAYFIELD TAB
-local RayfieldTab = Window:CreateTab("Rayfield", 4483362458)
+local RayfieldTab = Window:CreateTab("Rayfield", 4483362444)
 
 RayfieldTab:CreateButton({
-    Name = "AntiStun",
+    Name = "Antistun",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Antistun/refs/heads/main/Antistun"))();
+    end
+})
+
+RayfieldTab:CreateButton({
+    Name = "UI Reload",
+    Callback = function()
+        Rayfield:Destroy()
+        loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+    end
+})
+
+RayfieldTab:CreateButton({
+    Name = "Credits",
+    Callback = function()
+        print("Rayfield UI made by Sirius | Script collection by Sightseeing76")
     end
 })
 
