@@ -54,7 +54,7 @@ ForsakenTab:CreateButton({
 ForsakenTab:CreateButton({
     Name = "Chance Aimbot",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Lollygagsaken/refs/heads/main/Lollygagsaken"))();
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Chance-aimbot-/refs/heads/main/Chance%20aimbot"))();
     end
 })
 
