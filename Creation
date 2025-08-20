@@ -1,60 +1,50 @@
--- LOAD RAYFIELD UI
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
--- CREATE WINDOW WITH AMBER GLOW THEME
 local Window = Rayfield:CreateWindow({
-    Name = "Sightseeing76's collection",
+    Name = "Multi-Script Hub",
     LoadingTitle = "Loading...",
-    LoadingSubtitle = "Sightseeing76's",
+    LoadingSubtitle = "by you",
     ConfigurationSaving = {
         Enabled = true,
-        FolderName = "Sightseeing76's collection",
-        FileName = "Settings"
+        FolderName = "ExampleFolder",
+        FileName = "ExampleConfig"
     },
     Discord = {
         Enabled = false,
-        Invite = "yourinvitecode",
+        Invite = "",
         RememberJoins = true
     },
-    KeySystem = false,
-    Theme = "AmberGlow"
+    KeySystem = false
 })
 
 -- FORSAKEN TAB
-local ForsakenTab = Window:CreateTab("Forsaken", 4483362458)
+local ForsakenTab = Window:CreateTab("Forsaken", 4483362460)
 
 ForsakenTab:CreateButton({
     Name = "Auto Backstab",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/skibidi399/Auto-backstab-two-time/refs/heads/main/Auto%20backstab%20v2"))();
+        loadstring(game:HttpGet("https://pastefy.app/xY6vW6nJ/raw"))()
     end
 })
 
 ForsakenTab:CreateButton({
     Name = "OP",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/BobJunior1/ForsakenBoi/refs/heads/main/B0bbyHub"))();
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/GianScripting/Roblox-Scripts/main/Forsaken%20OP.lua"))()
     end
 })
 
 ForsakenTab:CreateButton({
-    Name = "Auto Block (Excludes Jason M1'A & Coolkid M1)",
+    Name = "Auto Block",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Auto-block-update-/refs/heads/main/Auto%20block"))();
-    end
-})
-
-ForsakenTab:CreateButton({
-    Name = "Ringta",
-    Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/wefwef127382/forsakenloader.github.io/refs/heads/main/RINGTABUBLIK.lua"))();
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Auto-block-update-/refs/heads/main/Auto%20block"))()
     end
 })
 
 ForsakenTab:CreateButton({
     Name = "Chance Aimbot",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Chance-aimbot-/refs/heads/main/Chance%20aimbot"))();
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Chance-aimbot-/refs/heads/main/Chance%20aimbot"))()
     end
 })
 
@@ -64,37 +54,32 @@ local DoorsTab = Window:CreateTab("Doors", 4483362460)
 DoorsTab:CreateButton({
     Name = "Sensation",
     Callback = function()
-        loadstring(game:HttpGet("https://rawscripts.net/raw/FLOOR-2-DOORS-Sensation-V2-20105"))();
+        loadstring(game:HttpGet("https://rawscripts.net/raw/FLOOR-2-DOORS-Sensation-V2-20105"))()
+    end
+})
+
+-- RINGTA TAB
+local RingtaTab = Window:CreateTab("Ringta", 4483362460)
+
+RingtaTab:CreateButton({
+    Name = "Ringta",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/wefwef127382/forsakenloader.github.io/refs/heads/main/RINGTABUBLIK.lua"))()
     end
 })
 
 -- RAYFIELD TAB
-local RayfieldTab = Window:CreateTab("Rayfield", 4483362444)
+local RayfieldTab = Window:CreateTab("Rayfield", 4483362460)
 
 RayfieldTab:CreateButton({
-    Name = "Antistun",
+    Name = "Anti-Stun",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Antistun/refs/heads/main/Antistun"))();
-    end
-})
-
-RayfieldTab:CreateButton({
-    Name = "UI Reload",
-    Callback = function()
-        Rayfield:Destroy()
-        loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
-    end
-})
-
-RayfieldTab:CreateButton({
-    Name = "Credits",
-    Callback = function()
-        print("Rayfield UI made by Sirius | Script collection by Sightseeing76")
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Antistun/refs/heads/main/Antistun"))()
     end
 })
 
 -- SERVERHOP TAB
-local ServerhopTab = Window:CreateTab("Serverhop", 4483362458)
+local ServerhopTab = Window:CreateTab("Serverhop", 4483362460)
 
 ServerhopTab:CreateButton({
     Name = "Low Player Serverhop",
@@ -102,20 +87,31 @@ ServerhopTab:CreateButton({
         local Http = game:GetService("HttpService")
         local TPS = game:GetService("TeleportService")
         local Api = "https://games.roblox.com/v1/games/"
-
         local _place = game.PlaceId
         local _servers = Api.._place.."/servers/Public?sortOrder=Asc&limit=100"
+
         function ListServers(cursor)
             local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or ""))
             return Http:JSONDecode(Raw)
         end
 
-        local Server, Next; repeat
+        local Server, Next
+        repeat
             local Servers = ListServers(Next)
             Server = Servers.data[1]
             Next = Servers.nextPageCursor
         until Server
 
-        TPS:TeleportToPlaceInstance(_place,Server.id,game:GetService('Players').LocalPlayer)
+        TPS:TeleportToPlaceInstance(_place, Server.id, game:GetService('Players').LocalPlayer)
+    end
+})
+
+-- INK GAME TAB
+local InkTab = Window:CreateTab("Ink Game", 4483362460)
+
+InkTab:CreateButton({
+    Name = "Credits to Ringta",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/wefwef127382/inkgames.github.io/refs/heads/main/ringta.lua"))()
     end
 })
