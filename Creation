@@ -1,135 +1,71 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-    Name = "Multi-Game Hub",
-    LoadingTitle = "Loading Hub...",
+    Name = "Forsaken Hub",
+    LoadingTitle = "Forsaken Scripts",
     LoadingSubtitle = "by Francis",
     ConfigurationSaving = {
-        Enabled = true,
-        FolderName = nil,
-        FileName = "MultiHubConfig"
+       Enabled = true,
+       FolderName = nil,
+       FileName = "ForsakenHubConfig"
     },
     Discord = {
-        Enabled = false,
-        Invite = "",
-        RememberJoins = true
+       Enabled = false,
+       Invite = "",
+       RememberJoins = true
     },
     KeySystem = false
 })
 
----------------------------------------------------
--- FORSAKEN TAB
----------------------------------------------------
+-- Forsaken Tab
 local ForsakenTab = Window:CreateTab("Forsaken", 4483362458)
-
-ForsakenTab:CreateButton({
-    Name = "Auto Backstab",
-    Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Auto-backstab-/refs/heads/main/Auto%20backstab"))()
-    end
-})
-
-ForsakenTab:CreateButton({
-    Name = "OP",
-    Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Op-script-/refs/heads/main/Op%20forsaken"))()
-    end
-})
 
 ForsakenTab:CreateButton({
     Name = "Auto Block",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Auto-block-update-/refs/heads/main/Auto%20block"))()
-    end
+    end,
 })
 
 ForsakenTab:CreateButton({
     Name = "Chance Aimbot",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/skibidi399/Chance-aimbot/refs/heads/main/script"))()
-    end
+    end,
 })
 
 ForsakenTab:CreateButton({
     Name = "Elliot Script",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Elliot/refs/heads/main/Elliot"))()
-    end
+    end,
 })
 
 ForsakenTab:CreateButton({
     Name = "Shedletsky",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Shedletsky-/refs/heads/main/Shedletsky%20script"))()
-    end
+    end,
 })
 
----------------------------------------------------
--- DOORS TAB
----------------------------------------------------
-local DoorsTab = Window:CreateTab("Doors", 4483362458)
-
-DoorsTab:CreateButton({
-    Name = "Doors Script",
-    Callback = function()
-        loadstring(game:HttpGet("https://rawscripts.net/raw/DOORS-Entity-Spawner-10865"))()
-    end
-})
-
----------------------------------------------------
--- SENSATION TAB
----------------------------------------------------
-local SensationTab = Window:CreateTab("Sensation", 4483362458)
-
-SensationTab:CreateButton({
-    Name = "Sensation",
-    Callback = function()
-        loadstring(game:HttpGet("https://rawscripts.net/raw/FLOOR-2-DOORS-Sensation-V2-20105"))()
-    end
-})
-
----------------------------------------------------
--- RINGTA TAB
----------------------------------------------------
+-- Ringta Tab
 local RingtaTab = Window:CreateTab("Ringta", 4483362458)
 
 RingtaTab:CreateButton({
-    Name = "Ringta",
+    Name = "Ringta Script",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/wefwef127382/forsakenloader.github.io/refs/heads/main/RINGTABUBLIK.lua"))()
-    end
+    end,
 })
 
----------------------------------------------------
--- RAYFIELD TAB
----------------------------------------------------
-local RayfieldTab = Window:CreateTab("Rayfield", 4483362458)
-
-RayfieldTab:CreateButton({
-    Name = "Anti Stun",
+RingtaTab:CreateButton({
+    Name = "Antistun",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Antistun/refs/heads/main/Antistun"))()
-    end
+    end,
 })
 
-RayfieldTab:CreateButton({
-    Name = "UI Reload",
-    Callback = function()
-        Rayfield:Destroy()
-        loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
-    end
-})
-
-RayfieldTab:CreateButton({
-    Name = "Credits",
-    Callback = function()
-        print("Rayfield UI made by Sirius | Script collection by Sightseeing76")
-    end
-})
-
----------------------------------------------------
--- SERVERHOP TAB
----------------------------------------------------
+-- Serverhop Tab
 local ServerhopTab = Window:CreateTab("Serverhop", 4483362458)
 
 ServerhopTab:CreateButton({
@@ -142,28 +78,36 @@ ServerhopTab:CreateButton({
         local _place = game.PlaceId
         local _servers = Api.._place.."/servers/Public?sortOrder=Asc&limit=100"
         function ListServers(cursor)
-            local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or ""))
-            return Http:JSONDecode(Raw)
+           local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or ""))
+           return Http:JSONDecode(Raw)
         end
 
         local Server, Next; repeat
-            local Servers = ListServers(Next)
-            Server = Servers.data[1]
-            Next = Servers.nextPageCursor
+           local Servers = ListServers(Next)
+           Server = Servers.data[1]
+           Next = Servers.nextPageCursor
         until Server
 
         TPS:TeleportToPlaceInstance(_place,Server.id,game:GetService('Players').LocalPlayer)
-    end
+    end,
 })
 
----------------------------------------------------
--- INK GAME TAB
----------------------------------------------------
+-- Ink Game Tab
 local InkTab = Window:CreateTab("Ink Game", 4483362458)
 
 InkTab:CreateButton({
     Name = "Credits to Ringta",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/wefwef127382/inkgames.github.io/refs/heads/main/ringta.lua"))()
-    end
+    end,
+})
+
+-- Universal Scripts Tab
+local UniversalTab = Window:CreateTab("Universal Scripts", 4483362458)
+
+UniversalTab:CreateButton({
+    Name = "Walkspeed Changer",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Walkspeed-changer/refs/heads/main/Walkspeed%20changer"))()
+    end,
 })
