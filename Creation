@@ -1,113 +1,66 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-    Name = "Forsaken Hub",
-    LoadingTitle = "Forsaken Scripts",
-    LoadingSubtitle = "by Francis",
-    ConfigurationSaving = {
-       Enabled = true,
-       FolderName = nil,
-       FileName = "ForsakenHubConfig"
-    },
-    Discord = {
-       Enabled = false,
-       Invite = "",
-       RememberJoins = true
-    },
-    KeySystem = false
+   Name = "Multi-Hub",
+   LoadingTitle = "Multi Script Hub",
+   LoadingSubtitle = "by Francis",
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil,
+      FileName = "MultiHubConfig"
+   },
+   Discord = {
+      Enabled = false,
+      Invite = "",
+      RememberJoins = true
+   },
+   KeySystem = false,
+   Theme = "AmberGlow"
 })
 
--- Forsaken Tab
-local ForsakenTab = Window:CreateTab("Forsaken", 4483362458)
+local RayfieldTab = Window:CreateTab("Rayfield ⚡", 4483362458)
+RayfieldTab:CreateButton({
+   Name = "AntiStun",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Antistun/refs/heads/main/Antistun"))()
+   end
+})
 
+local ForsakenTab = Window:CreateTab("Forsaken 💀", 4483362458)
 ForsakenTab:CreateButton({
-    Name = "Auto Block",
-    Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Auto-block-update-/refs/heads/main/Auto%20block"))()
-    end,
+   Name = "Chance Aimbot",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/skibidi399/Chance-aimbot/refs/heads/main/script"))()
+   end
 })
-
 ForsakenTab:CreateButton({
-    Name = "Chance Aimbot",
-    Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/skibidi399/Chance-aimbot/refs/heads/main/script"))()
-    end,
+   Name = "Elliot Script",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Elliot/refs/heads/main/Elliot"))()
+   end
 })
-
 ForsakenTab:CreateButton({
-    Name = "Elliot Script",
-    Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Elliot/refs/heads/main/Elliot"))()
-    end,
+   Name = "Shedletsky",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Shedletsky-/refs/heads/main/Shedletsky%20script"))()
+   end
 })
 
-ForsakenTab:CreateButton({
-    Name = "Shedletsky",
-    Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Shedletsky-/refs/heads/main/Shedletsky%20script"))()
-    end,
-})
-
--- Ringta Tab
-local RingtaTab = Window:CreateTab("Ringta", 4483362458)
-
-RingtaTab:CreateButton({
-    Name = "Ringta Script",
-    Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/wefwef127382/forsakenloader.github.io/refs/heads/main/RINGTABUBLIK.lua"))()
-    end,
-})
-
-RingtaTab:CreateButton({
-    Name = "Antistun",
-    Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Antistun/refs/heads/main/Antistun"))()
-    end,
-})
-
--- Serverhop Tab
-local ServerhopTab = Window:CreateTab("Serverhop", 4483362458)
-
-ServerhopTab:CreateButton({
-    Name = "Low Player Serverhop",
-    Callback = function()
-        local Http = game:GetService("HttpService")
-        local TPS = game:GetService("TeleportService")
-        local Api = "https://games.roblox.com/v1/games/"
-
-        local _place = game.PlaceId
-        local _servers = Api.._place.."/servers/Public?sortOrder=Asc&limit=100"
-        function ListServers(cursor)
-           local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or ""))
-           return Http:JSONDecode(Raw)
-        end
-
-        local Server, Next; repeat
-           local Servers = ListServers(Next)
-           Server = Servers.data[1]
-           Next = Servers.nextPageCursor
-        until Server
-
-        TPS:TeleportToPlaceInstance(_place,Server.id,game:GetService('Players').LocalPlayer)
-    end,
-})
-
--- Ink Game Tab
-local InkTab = Window:CreateTab("Ink Game", 4483362458)
-
+local InkTab = Window:CreateTab("Ink Game 🖋️", 4483362458)
 InkTab:CreateButton({
-    Name = "Credits to Ringta",
-    Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/wefwef127382/inkgames.github.io/refs/heads/main/ringta.lua"))()
-    end,
+   Name = "Credits to ringta",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/wefwef127382/inkgames.github.io/refs/heads/main/ringta.lua"))()
+   end
 })
 
--- Universal Scripts Tab
-local UniversalTab = Window:CreateTab("Universal Scripts", 4483362458)
-
+local UniversalTab = Window:CreateTab("Universal 🌍", 4483362458)
 UniversalTab:CreateButton({
-    Name = "Walkspeed Changer",
-    Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Walkspeed-changer/refs/heads/main/Walkspeed%20changer"))()
-    end,
+   Name = "Walkspeed Changer",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Walkspeed-changer/refs/heads/main/Walkspeed%20changer"))()
+   end
 })
+
+local DoorsTab = Window:CreateTab("Doors 🚪", 4483362458)
+DoorsTab:CreateSection("🚪 Coming Soon")
