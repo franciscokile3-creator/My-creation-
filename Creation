@@ -1,4 +1,3 @@
-
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
@@ -55,6 +54,13 @@ ForsakenTab:CreateButton({
     Name = "Elliot Script",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Elliot/refs/heads/main/Elliot"))()
+    end
+})
+
+ForsakenTab:CreateButton({
+    Name = "Shedletsky",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/franciscokile3-creator/Shedletsky-/refs/heads/main/Shedletsky%20script"))()
     end
 })
 
