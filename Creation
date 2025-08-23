@@ -18,6 +18,7 @@ local Window = Rayfield:CreateWindow({
    Theme = "AmberGlow"
 })
 
+-- Rayfield Tab
 local RayfieldTab = Window:CreateTab("Rayfield ⚡", 4483362458)
 RayfieldTab:CreateButton({
    Name = "AntiStun",
@@ -26,6 +27,7 @@ RayfieldTab:CreateButton({
    end
 })
 
+-- Forsaken Tab
 local ForsakenTab = Window:CreateTab("Forsaken 💀", 4483362458)
 ForsakenTab:CreateButton({
    Name = "Chance Aimbot",
@@ -46,6 +48,7 @@ ForsakenTab:CreateButton({
    end
 })
 
+-- Ink Game Tab
 local InkTab = Window:CreateTab("Ink Game 🖋️", 4483362458)
 InkTab:CreateButton({
    Name = "Credits to ringta",
@@ -54,6 +57,7 @@ InkTab:CreateButton({
    end
 })
 
+-- Universal Scripts Tab
 local UniversalTab = Window:CreateTab("Universal 🌍", 4483362458)
 UniversalTab:CreateButton({
    Name = "Walkspeed Changer",
@@ -62,5 +66,35 @@ UniversalTab:CreateButton({
    end
 })
 
+-- Doors Tab
 local DoorsTab = Window:CreateTab("Doors 🚪", 4483362458)
+DoorsTab:CreateButton({
+   Name = "Sensation",
+   Callback = function()
+      loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/730854e5b6499ee91deb1080e8e12ae3.lua"))()
+   end
+})
 DoorsTab:CreateSection("🚪 Coming Soon")
+
+-- ServerHop Tab
+local ServerHopTab = Window:CreateTab("ServerHop 🔄", 4483362458)
+ServerHopTab:CreateButton({
+   Name = "Low Player ServerHop",
+   Callback = function()
+      local Http = game:GetService("HttpService")
+      local TPS = game:GetService("TeleportService")
+      local Api = "https://games.roblox.com/v1/games/"
+      local _place = game.PlaceId
+      local _servers = Api.._place.."/servers/Public?sortOrder=Asc&limit=100"
+      function ListServers(cursor)
+          local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or ""))
+          return Http:JSONDecode(Raw)
+      end
+      local Server, Next; repeat
+          local Servers = ListServers(Next)
+          Server = Servers.data[1]
+          Next = Servers.nextPageCursor
+      until Server
+      TPS:TeleportToPlaceInstance(_place,Server.id,game:GetService('Players').LocalPlayer)
+   end
+})
