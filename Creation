@@ -98,3 +98,12 @@ ServerHopTab:CreateButton({
       TPS:TeleportToPlaceInstance(_place,Server.id,game:GetService('Players').LocalPlayer)
    end
 })
+
+-- Ringta Tab
+local RingtaTab = Window:CreateTab("Ringta 🌀", 4483362458)
+RingtaTab:CreateButton({
+   Name = "Forsaken",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/wefwef127382/forsakenloader.github.io/refs/heads/main/RINGTABUBLIK.lua"))()
+   end
+})
